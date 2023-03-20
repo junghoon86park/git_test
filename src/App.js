@@ -1,43 +1,64 @@
-import { Navbar, Nav } from 'react-bootstrap';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFlip, Pagination, Navigation } from "swiper";
-
+import React, { Component } from 'react'
 import styled from 'styled-components';
-import "swiper/css";
-import "swiper/css/effect-flip";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav } from 'react-bootstrap';
+
+import Fullpage, { FullPageSections, FullpageSection } from '@ap.cx/react-fullpage'
+/* css */
 import './test_index.css'
+/* //css */
+/* img */
+import spaceBg from  './img/space.jpg';
+import spaceBgOne from  './img/space_bg.jpeg';
+import spaceBgTwo from  './img/space_bg1.jpeg';
+import moutainBg from  './img/m1.jpg';
+/* //img */
 
-import BgOne from  './img/space_bg.jpeg';
-import BgTwo from  './img/space_bg1.jpeg';
 
-const Container = styled.div`
+const NavU = styled(Nav)`
   width:100%;
+  height:30px;
+  display:flex;
+  line-height:30px;
+  padding:10px;
 `;
-const MainBg = styled.div`
-  background-color:#fff;  
+const NavL = styled(Navbar)`
+  text-align:center;
+  flex:1;
 `;
+const NavD = styled.div`
+  width:30%;
+  display:flex;
+  color:#fff;
+  font-size:16px;
+`;
+
 function App() {
   return (
     <>
-      <Navbar bg="dark" variant="dark" className="chk">
-      <Container>
-          <Nav className="me-auto">
-            <Nav.Link href="https://www.naver.com" target="_blank">네이버</Nav.Link>
-            <Nav.Link href="https://www.daum.net" target="_blank">다음</Nav.Link>
-            <Nav.Link href="https://phpschool.com" target="_blank">phpschool</Nav.Link>
-          </Nav>
-          <MainBg>
-            <Swiper modules={[EffectFlip, Pagination, Navigation]} effect="flip" pagination={true} navigation={true} loop={true}>
-              <SwiperSlide testchk="111" style={{ backgroundImage: `url(${BgOne})` }}></SwiperSlide>
-              <SwiperSlide testchk="112" style={{ backgroundImage: `url(${BgTwo})` }}></SwiperSlide>
-              <SwiperSlide testchk="113" style={{ backgroundImage: `url(${BgOne})` }}></SwiperSlide>              
-            </Swiper>
-          </MainBg>
-        </Container>
-      </Navbar>
+      <Fullpage>
+        <FullPageSections>
+          <FullpageSection style={{
+            backgroundColor: '#999',           
+            padding: '1em',
+          }}>
+            <NavD>
+              <NavU>
+                <NavL>test1</NavL>
+                <NavL>test2</NavL>
+                <NavL>test3</NavL>
+              </NavU>
+            </NavD>
+          </FullpageSection>
+          <FullpageSection style={{
+            backgroundColor: '#000',
+            padding: '1em',
+          }}>2</FullpageSection>
+          <FullpageSection style={{
+            backgroundColor: '#777',
+            padding: '1em',
+          }}>3</FullpageSection>
+        </FullPageSections>
+      </Fullpage>
     </>
   );
 }
